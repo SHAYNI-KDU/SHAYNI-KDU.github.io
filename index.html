@@ -48,21 +48,41 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .hero-name{font-family:'Poppins',sans-serif;line-height:.9;margin-bottom:1rem;}
 .hero-name .line-a{display:block;font-size:clamp(4rem,10vw,9rem);font-weight:700;color:var(--white);letter-spacing:-.03em;}
 .hero-name .line-b{display:block;font-size:clamp(3.5rem,9vw,8rem);font-weight:300;color:transparent;-webkit-text-stroke:1.5px rgba(108,99,255,.8);letter-spacing:-.02em;}
-.hero-profile-wrap{position:absolute;right:6%;top:50%;transform:translateY(-50%);z-index:2;}
-.hero-profile-ring{width:260px;height:260px;border-radius:50%;border:2px solid rgba(108,99,255,.4);padding:6px;background:rgba(108,99,255,.05);display:flex;align-items:center;justify-content:center;animation:ringGlow 3s ease-in-out infinite;}
+
+/* ── PROFILE CIRCLE: moved more to center, photo properly centered ── */
+.hero-profile-wrap{
+  position:absolute;
+  right:18%;          /* was 6% — now pulls it toward centre */
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+}
+.hero-profile-ring{
+  width:280px;height:280px;border-radius:50%;
+  border:2px solid rgba(108,99,255,.4);
+  padding:8px;
+  background:rgba(108,99,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  animation:ringGlow 3s ease-in-out infinite;
+  overflow:hidden;  /* keeps photo clipped to ring */
+}
 @keyframes ringGlow{0%,100%{box-shadow:0 0 20px rgba(108,99,255,.2),0 0 40px rgba(0,191,255,.08);}50%{box-shadow:0 0 40px rgba(108,99,255,.35),0 0 80px rgba(0,191,255,.15);}}
 
-/* ONLY MODIFIED AREA: ADDED BACKGROUND IMAGE TO INITIALS BOX */
+/* Photo div: fills the ring perfectly, centered */
 .profile-initials{
-  width:248px;
-  height:248px;
+  width:264px;
+  height:264px;
   border-radius:50%;
   background-image: url('profile.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center;  /* centres the photo */
+  background-repeat: no-repeat;
+  /* fallback gradient when no photo */
+  background-color: rgba(108,99,255,.15);
   display:flex;
   align-items:center;
   justify-content:center;
+  overflow:hidden;
 }
 
 .hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;flex-wrap:wrap;margin-top:2rem;}
@@ -233,7 +253,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
 </style>
 </head>
 <body>
- 
+
 <div id="wand">
   <svg class="wand-svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
     <defs>
@@ -251,7 +271,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
 </div>
 <div id="cursor-ring"></div>
 <div id="cursor-dot"></div>
- 
+
 <nav>
   <div class="nav-logo">SR<span>.</span></div>
   <ul class="nav-links">
@@ -263,17 +283,17 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
   </ul>
   <a href="mailto:shainyravishika6464@gmail.com" class="nav-cv">✉ Get in Touch</a>
 </nav>
- 
+
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-bg-text">DATA<br>SCIENCE</div>
- 
+
   <div class="hero-profile-wrap sr">
     <div class="hero-profile-ring">
       <div class="profile-initials"></div>
     </div>
   </div>
- 
+
   <div class="hero-content">
     <div class="hero-eyebrow sr">
       <div class="eyebrow-line"></div>
@@ -308,13 +328,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
   </div>
   <div class="hero-scroll"><span class="scroll-vert">scroll</span><div class="scroll-arrow"></div></div>
 </section>
- 
+
 <div class="ink-blob-divider">
   <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,0 L1440,0 L1440,40 Q1320,120 1200,80 Q1100,40 1000,90 Q900,120 800,70 Q700,30 600,85 Q500,120 400,60 Q300,20 200,80 Q100,120 0,60 Z" fill="#e8edf8"/>
   </svg>
 </div>
- 
+
 <div class="stats-section">
   <div class="stats-inner">
     <div class="stat-col sr" data-label="Total">
@@ -335,13 +355,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
     </div>
   </div>
 </div>
- 
+
 <div class="ink-blob-divider" style="background:var(--white2);">
   <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,120 L1440,120 L1440,80 Q1350,0 1240,55 Q1130,100 1020,40 Q920,0 800,60 Q690,110 570,50 Q450,0 340,65 Q220,110 110,45 Q50,10 0,60 Z" fill="#0A192F"/>
   </svg>
 </div>
- 
+
 <section id="about" class="about-section">
   <div class="about-inner">
     <div class="sr">
@@ -365,13 +385,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
     </div>
   </div>
 </section>
- 
+
 <div class="ink-blob-divider" style="background:var(--black);">
   <svg viewBox="0 0 1440 130" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,0 L1440,0 L1440,60 Q1370,130 1260,80 Q1150,30 1030,100 Q910,140 780,75 Q660,20 530,90 Q410,140 300,70 Q190,20 80,95 Q30,120 0,80 Z" fill="#e8edf8"/>
   </svg>
 </div>
- 
+
 <section id="skills" class="skills-section">
   <div class="skills-inner">
     <div class="sec-tag-dark sr">Skills</div>
@@ -405,13 +425,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
     </div>
   </div>
 </section>
- 
+
 <div class="ink-blob-divider" style="background:var(--white2);">
   <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,120 L1440,120 L1440,70 Q1380,10 1280,65 Q1180,110 1070,45 Q960,0 840,55 Q720,100 600,40 Q480,0 360,60 Q250,110 140,50 Q70,15 0,70 Z" fill="#0A192F"/>
   </svg>
 </div>
- 
+
 <section id="projects" class="projects-section">
   <div class="projects-inner">
     <div class="proj-header sr">
@@ -420,7 +440,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
         <h2 class="sec-title-xl" style="margin-bottom:0;">Projects &<br><em>Builds.</em></h2>
       </div>
     </div>
- 
+
     <div class="proj-bento sr d1">
       <div class="pb c12 pb-hero">
         <div>
@@ -437,7 +457,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
         </div>
         <div class="pb-ghost">01</div>
       </div>
- 
+
       <div class="pb c12 pb-hero" style="background:#0d1f3c;">
         <div>
           <div class="pb-index">02</div>
@@ -453,7 +473,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
         </div>
         <div class="pb-ghost">02</div>
       </div>
- 
+
       <div class="pb c6 pb-tall">
         <div>
           <div class="pb-index">03</div>
@@ -469,7 +489,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
         </div>
         <div class="pb-ghost">03</div>
       </div>
- 
+
       <div class="pb c6 pb-tall" style="background:#0d1f3c;">
         <div>
           <div class="pb-index">04</div>
@@ -486,7 +506,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
         <div class="pb-ghost">04</div>
       </div>
     </div>
- 
+
     <div class="proj-ticker-wrap sr d2">
       <div class="proj-ticker">
         <span class="proj-ticker-item">Western Australia Public Health</span>
@@ -513,13 +533,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
         <span class="proj-ticker-item">PsyDetect AI</span>
       </div>
     </div>
- 
+
     <div class="proj-sm-header sr d2">
       <div class="proj-sm-header-line"></div>
       <span class="proj-sm-header-txt">More Projects — 05 through 11</span>
       <div class="proj-sm-header-line"></div>
     </div>
- 
+
     <div class="proj-sm-grid sr d3">
       <div class="psm">
         <div class="psm-idx">05</div>
@@ -573,13 +593,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
     </div>
   </div>
 </section>
- 
+
 <div class="ink-blob-divider" style="background:var(--black);">
   <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,0 L1440,0 L1440,50 Q1370,120 1260,70 Q1150,20 1040,85 Q930,130 810,60 Q690,0 560,75 Q440,130 310,65 Q190,10 70,85 Q30,105 0,70 Z" fill="#f0f4ff"/>
   </svg>
 </div>
- 
+
 <section id="education" class="edu-section">
   <div class="edu-inner">
     <div class="sec-tag-dark sr" style="color:var(--muted2);">Education</div>
@@ -595,13 +615,13 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
     </div>
   </div>
 </section>
- 
+
 <div class="ink-blob-divider" style="background:var(--white);">
   <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,120 L1440,120 L1440,80 Q1350,0 1240,55 Q1130,100 1020,40 Q920,0 800,60 Q690,110 570,50 Q450,0 340,65 Q220,110 110,45 Q50,10 0,60 Z" fill="#0A192F"/>
   </svg>
 </div>
- 
+
 <section id="contact" class="contact-section">
   <div class="contact-inner">
     <div class="sr">
@@ -637,18 +657,18 @@ footer{background:var(--black);border-top:1px solid var(--border-dark);padding:1
     </div>
   </div>
 </section>
- 
+
 <div class="ink-blob-divider" style="background:var(--white);">
   <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M0,80 L1440,80 L1440,50 Q1300,0 1100,40 Q900,70 700,20 Q500,0 300,45 Q150,70 0,30 Z" fill="#0A192F"/>
   </svg>
 </div>
- 
+
 <footer>
   <div class="f-logo">Shayni <strong>Ravishika</strong></div>
   <div class="f-copy">© 2025 · All rights reserved</div>
 </footer>
- 
+
 <script>
 const wandEl=document.getElementById('wand');
 const ringEl=document.getElementById('cursor-ring');
